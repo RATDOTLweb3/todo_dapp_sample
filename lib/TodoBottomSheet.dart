@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'TodoListModel.dart';
 
-showTodoBottomSheet(BuildContext context, {Task task}) {
+showTodoBottomSheet(BuildContext context, {Task? task}) {
   TextEditingController _titleController =
       TextEditingController(text: task?.taskName ?? "");
   var listModel = Provider.of<TodoListModel>(context, listen: false);
@@ -11,8 +11,8 @@ showTodoBottomSheet(BuildContext context, {Task task}) {
     context: context,
     builder: (BuildContext context) {
       return Container(
-        padding: EdgeInsets.only(top: 10),
-        margin: EdgeInsets.all(10),
+        padding: const EdgeInsets.only(top: 10),
+        margin: const EdgeInsets.all(10),
         height: 300,
         child: SingleChildScrollView(
           child: Column(
@@ -25,14 +25,14 @@ showTodoBottomSheet(BuildContext context, {Task task}) {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              SizedBox(height: 18),
+              const SizedBox(height: 18),
               TextField(
                 controller: _titleController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
-                  contentPadding: const EdgeInsets.only(
+                  contentPadding: EdgeInsets.only(
                     left: 14.0,
                     bottom: 20.0,
                     top: 20.0,
@@ -42,11 +42,11 @@ showTodoBottomSheet(BuildContext context, {Task task}) {
                     fontSize: 20,
                   ),
                 ),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               if (task == null)
                 buildButton("Created", () {
                   listModel.addTask(_titleController.text);
@@ -70,7 +70,7 @@ showTodoBottomSheet(BuildContext context, {Task task}) {
   );
 }
 
-TextButton buildButton(String text, Function onPressed) {
+TextButton buildButton(String text, Function() onPressed) {
   return TextButton(
     onPressed: onPressed,
     child: Container(
